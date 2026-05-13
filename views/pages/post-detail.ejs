@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+    <!-- Post Hero -->
+    <header class="post-hero">
+        <div class="hero-img-wrapper">
+            <img src="<%= post.image %>" alt="<%= post.title %>">
+            <div class="hero-img-overlay"></div>
+        </div>
+        <div class="hero-content-wrap">
+            <div class="container">
+                <a href="/blog" class="back-link">&larr; Back to Blog</a>
+                <span class="post-category-badge"><%= post.category %></span>
+                <h1><%= post.title %></h1>
+                <p class="post-excerpt"><%= post.excerpt %></p>
+                <div class="post-meta">
+                    <span>By <%= post.author %></span>
+                    <span><%= post.date %></span>
+                    <span><%= post.readTime %> read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <article class="container" style="padding:60px 0 100px;">
+        <div class="article-layout">
+            <div class="post-content">
+                <% post.sections.forEach(section => { %>
+                    <% if (section.type === 'lead') { %>
+                        <p class="post-lead"><%= section.content %></p>
+                    <% } else if (section.type === 'paragraph') { %>
+                        <p><%= section.content %></p>
+                    <% } else if (section.type === 'heading') { %>
+                        <h2><%= section.content %></h2>
+                    <% } else if (section.type === 'pillars') { %>
+                        <div class="post-pillars">
+                            <h3><%= section.title %></h3>
+                            <% section.items.forEach((item, i) => { %>
+                            <div class="pillar-item">
+                                <div class="pillar-num"><%= i + 1 %></div>
+                                <div class="pillar-text">
+                                    <strong><%= item.label %>:</strong> <%= item.text %>
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                    <% } else if (section.type === 'comparison') { %>
+                        <div class="post-comparison">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Aspect</th>
+                                        <th>Mass Tourism</th>
+                                        <th>Eco Tourism</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% section.items.forEach(row => { %>
+                                    <tr>
+                                        <td><strong><%= row[0] %></strong></td>
+                                        <td><%= row[1] %></td>
+                                        <td><%= row[2] %></td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    <% } else if (section.type === 'steps') { %>
+                        <div class="post-steps">
+                            <% section.items.forEach(item => { %>
+                            <div class="post-step">
+                                <div class="post-step-icon"><%= item.icon %></div>
+                                <div>
+                                    <h3><%= item.title %></h3>
+                                    <p><%= item.text %></p>
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                    <% } else if (section.type === 'image') { %>
+                        <div class="post-image">
+                            <img src="<%= section.src %>" alt="<%= section.alt %>" loading="lazy">
+                            <% if (section.caption) { %>
+                            <p class="image-caption"><%= section.caption %></p>
+                            <% } %>
+                        </div>
+                    <% } else if (section.type === 'image-grid') { %>
+                        <div class="post-image-grid">
+                            <% section.images.forEach(img => { %>
+                            <div class="post-image-grid-item">
+                                <img src="<%= img.src %>" alt="<%= img.alt %>" loading="lazy">
+                                <% if (img.caption) { %>
+                                <p class="image-caption"><%= img.caption %></p>
+                                <% } %>
+                            </div>
+                            <% }) %>
+                        </div>
+                    <% } else if (section.type === 'callout') { %>
+                        <div class="callout-box">
+                            <p><%= section.content %></p>
+                            <% if (section.source) { %>
+                            <span class="callout-source"><%= section.source %></span>
+                            <% } %>
+                        </div>
+                    <% } else if (section.type === 'quote') { %>
+                        <div class="post-quote">
+                            <blockquote><%= section.content %></blockquote>
+                            <% if (section.author) { %>
+                            <cite><%= section.author %></cite>
+                            <% } %>
+                        </div>
+                    <% } else if (section.type === 'list') { %>
+                        <ul class="post-list">
+                            <% section.items.forEach(item => { %>
+                            <li><strong><%= item.title %></strong> — <%= item.text %></li>
+                            <% }) %>
+                        </ul>
+                    <% } else if (section.type === 'stats-grid') { %>
+                        <div class="stats-grid">
+                            <% section.items.forEach(item => { %>
+                            <div class="stat-item">
+                                <span class="stat-item-number"><%= item.number %></span>
+                                <span class="stat-item-label"><%= item.label %></span>
+                                <% if (item.sublabel) { %>
+                                <span class="stat-item-sublabel"><%= item.sublabel %></span>
+                                <% } %>
+                            </div>
+                            <% }) %>
+                        </div>
+                    <% } else if (section.type === 'feature-grid') { %>
+                        <div class="feature-grid">
+                            <% section.items.forEach(item => { %>
+                            <div class="feature-card">
+                                <div class="feature-icon"><%= item.icon %></div>
+                                <h3><%= item.title %></h3>
+                                <p><%= item.text %></p>
+                            </div>
+                            <% }) %>
+                        </div>
+                    <% } else if (section.type === 'data-bar') { %>
+                        <div class="data-bar-section">
+                            <% if (section.title) { %><h3><%= section.title %></h3><% } %>
+                            <div class="data-bars">
+                                <% section.items.forEach(item => { %>
+                                <div class="data-bar-item">
+                                    <div class="data-bar-header">
+                                        <span class="data-bar-label"><%= item.label %></span>
+                                        <span class="data-bar-value"><%= item.value %></span>
+                                    </div>
+                                    <div class="data-bar-track">
+                                        <div class="data-bar-fill" style="width:<%= item.percent %>%; background: var(--<%= item.color || 'primary' %>);"></div>
+                                    </div>
+                                </div>
+                                <% }) %>
+                            </div>
+                            <% if (section.source) { %>
+                            <p class="chart-source"><%= section.source %></p>
+                            <% } %>
+                        </div>
+                    <% } %>
+                <% }) %>
+
+                <!-- Related Posts -->
+                <% if (related.length > 0) { %>
+                <div class="related-posts">
+                    <h3>Related Articles</h3>
+                    <div class="blog-grid">
+                        <% related.forEach(p => { %>
+                            <%- include('../components/blog-card', { post: p }) %>
+                        <% }) %>
+                    </div>
+                </div>
+                <% } %>
+
+                <!-- CTA -->
+                <div class="article-cta">
+                    <h3>Ready to Experience Eco Tourism in Bangladesh?</h3>
+                    <p>Explore ESDO's eco-tourism destinations and plan your first sustainable trip.</p>
+                    <a href="/destinations" class="btn btn-white">Explore Destinations</a>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Article Info</h3>
+                    <div class="quick-fact"><span class="fact-number"><%= post.category %></span><span class="fact-text">category</span></div>
+                    <div class="quick-fact"><span class="fact-number"><%= post.readTime %></span><span class="fact-text">read time</span></div>
+                    <div class="quick-fact"><span class="fact-number"><%= post.date %></span><span class="fact-text">published</span></div>
+                </div>
+                <% if (post.tags && post.tags.length > 0) { %>
+                <div class="sidebar-widget">
+                    <h3>Tags</h3>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <% post.tags.forEach(tag => { %>
+                            <a href="/blog?search=<%= encodeURIComponent(tag) %>" class="exp-tag"><%= tag %></a>
+                        <% }) %>
+                    </div>
+                </div>
+                <% } %>
+                <div class="sidebar-widget">
+                    <h3>More Articles</h3>
+                    <% posts.filter(p => p.slug !== post.slug).slice(0, 3).forEach(p => { %>
+                    <p class="related-post"><a href="/blog/<%= p.slug %>"><%= p.title %></a></p>
+                    <% }) %>
+                </div>
+            </aside>
+        </div>
+    </article>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

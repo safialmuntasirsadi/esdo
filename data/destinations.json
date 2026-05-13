@@ -1,0 +1,164 @@
+[
+  {
+    "id": "thakurgaon",
+    "name": "Thakurgaon",
+    "slug": "thakurgaon",
+    "badge": "Thakurgaon",
+    "tagline": "Where History Meets the Harvest",
+    "shortDesc": "Explore the historic Ramrai Dighi, the legendary Surjapuri Mango Tree, and experience authentic rural life in northern Bangladesh's agricultural heartland.",
+    "description": "A district shaped by ancient ponds, legendary mango trees, and a community that has preserved its agricultural heritage for generations.",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop",
+    "heroImage": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1400&h=700&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=500&fit=crop"
+    ],
+    "division": "Rangpur",
+    "area": "1,809.12 km²",
+    "population": "~1.4 million",
+    "upazilas": "5 (Sadar, Pirganj, Ranisankail, Baliadangi, Haripur)",
+    "rivers": "Kulik, Tangon, Punarbhaba",
+    "knownFor": "Mangoes, paddy, Ramrai Dighi, Surjapuri heritage",
+    "bestSeason": "October to March",
+    "ecoModel": "Community homestays, heritage walks, agro-tours",
+    "elevation": "20-30m",
+    "budget": "৳4,000-6,000 for 2 days",
+    "tags": ["Heritage", "Nature", "Culture"],
+    "experiences": [
+      {
+        "icon": "🌊",
+        "title": "Ramrai Dighi Heritage Walk",
+        "desc": "A guided walk around the centuries-old pond with local historians. Learn about Mughal-era water management, the pond's role during 1971, and the ecology of the surrounding area.",
+        "details": ["Duration: 2 hours", "Free / Donation-based"]
+      },
+      {
+        "icon": "🌳",
+        "title": "Surjapuri Orchard Visit",
+        "desc": "Visit the legendary Surjapuri mango tree and surrounding orchards. Seasonal mango tasting sessions with local farming families who preserve heritage cultivars.",
+        "details": ["Season: June-August", "Duration: 3 hours"]
+      },
+      {
+        "icon": "🏠",
+        "title": "Community Homestay",
+        "desc": "Stay with a local family in Thakurgaon's eco-village homestay program. Experience rural Bangladeshi life — from morning farming routines to evening meals cooked with homegrown ingredients.",
+        "details": ["Duration: 1-2 nights", "ESDO-managed"]
+      },
+      {
+        "icon": "🌾",
+        "title": "Agricultural Immersion",
+        "desc": "Join local farmers for a day in the fields. From paddy transplantation to vegetable harvesting, experience the agricultural rhythms that define Thakurgaon's identity.",
+        "details": ["Duration: Full day", "Seasonal"]
+      }
+    ],
+    "nextDestination": "panchagarh"
+  },
+  {
+    "id": "panchagarh",
+    "name": "Panchagarh",
+    "slug": "panchagarh",
+    "badge": "Panchagarh",
+    "tagline": "The Edge of Bangladesh",
+    "shortDesc": "Stand at Banglabandha Zero Point, walk through organic tea estates, and discover geological stones from the Himalayas at the Rocks Museum.",
+    "description": "Stand at the northernmost point of a nation, walk through organic tea estates that rival Darjeeling, and hold geological stones older than human civilization.",
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&h=400&fit=crop",
+    "heroImage": "https://images.unsplash.com/photo-1596422846543-75c6fc197c07?w=1400&h=700&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1564834724105-9749be37b8ff?w=1200&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&h=500&fit=crop"
+    ],
+    "division": "Rangpur",
+    "area": "1,404.57 km²",
+    "population": "~1.2 million",
+    "upazilas": "5 (Panchagarh Sadar, Tetulia, Debiganj, Boda, Atwari)",
+    "rivers": "Karatoya, Atrai, Mahananda",
+    "knownFor": "Banglabandha Zero Point, tea gardens, Rocks Museum, Himalayan views",
+    "bestSeason": "October to March (winter: 5-15°C)",
+    "ecoModel": "Tea estate tours, geological tours, homestays, border tourism",
+    "elevation": "30-45m above sea level (highest in Bangladesh)",
+    "budget": "৳6,000-9,000 for 3 days",
+    "tags": ["Adventure", "Tea Gardens", "Geology"],
+    "experiences": [
+      {
+        "icon": "🏔️",
+        "title": "Banglabandha Zero Point",
+        "desc": "Stand at the northernmost tip of Bangladesh. On clear winter days, the snow-capped peaks of Kanchenjunga (8,586m) are visible. Guided border walks and visitor interpretation center.",
+        "details": ["Duration: 2 hours", "Free entry"]
+      },
+      {
+        "icon": "☕",
+        "title": "Kazi & Kazi Tea Estate Tour",
+        "desc": "Walk through organic tea gardens, participate in tea tasting sessions, tour the processing factory, and meet the indigenous tea garden workers.",
+        "details": ["Duration: 3-4 hours", "৳200 per person"]
+      },
+      {
+        "icon": "🪨",
+        "title": "Rocks Museum & River Walk",
+        "desc": "Explore the geological museum housing Himalayan stones, then join a guided stone-hunting walk along the riverbeds.",
+        "details": ["Duration: 2-3 hours", "Guide: ৳300"]
+      },
+      {
+        "icon": "👩‍🌾",
+        "title": "Indigenous Community Visit",
+        "desc": "Meet the Santal indigenous communities and learn about their agricultural practices, festivals, and oral traditions.",
+        "details": ["Duration: Half day", "ESDO-facilitated"]
+      }
+    ],
+    "nextDestination": "dinajpur"
+  },
+  {
+    "id": "dinajpur",
+    "name": "Dinajpur",
+    "slug": "dinajpur",
+    "badge": "Dinajpur",
+    "tagline": "Terracotta Heritage & Rural Eco-Villages",
+    "shortDesc": "Visit the magnificent Kantaji Terracotta Temple, experience ESDO's model eco-villages, and discover the cultural richness of northern Bengal.",
+    "description": "A district where centuries-old terracotta temples stand alongside living eco-villages — Dinajpur is where Bangladesh's cultural heritage meets sustainable development.",
+    "image": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=600&h=400&fit=crop",
+    "heroImage": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&h=700&fit=crop",
+    "gallery": [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=500&fit=crop"
+    ],
+    "division": "Rangpur",
+    "area": "2,464.51 km²",
+    "population": "~3.0 million",
+    "upazilas": "13 (Sadar, Birampur, Birganj, Biral, Bochaganj, Chirirbandar, Phulbari, Ghoraghat, Hakimpur, Kaharole, Khansama, Nawabganj, Parbatipur)",
+    "rivers": "Punarbhaba, Tangon, Kulik",
+    "knownFor": "Kantaji Temple, terracotta architecture, eco-villages, lychee orchards",
+    "bestSeason": "October to March",
+    "ecoModel": "Heritage tourism, eco-village homestays, cultural immersion",
+    "elevation": "20-35m",
+    "budget": "৳4,000-6,000 for 2 days",
+    "tags": ["Architecture", "Community", "History"],
+    "experiences": [
+      {
+        "icon": "🛕",
+        "title": "Kantaji Terracotta Temple",
+        "desc": "Visit one of South Asia's finest examples of Hindu temple architecture. The 18th-century temple features intricate terracotta panels depicting scenes from the Ramayana, Mahabharata, and daily rural life.",
+        "details": ["Duration: 1.5 hours", "Free entry"]
+      },
+      {
+        "icon": "🏠",
+        "title": "ESDO Eco-Village Stay",
+        "desc": "Experience ESDO's model eco-village — a community designed around sustainable living, organic farming, and environmental conservation. Participate in daily activities and learn about the eco-village concept.",
+        "details": ["Duration: 1-2 nights", "ESDO-managed"]
+      },
+      {
+        "icon": "🎭",
+        "title": "Cultural Heritage Walk",
+        "desc": "Explore Dinajpur's old town with a local guide — visiting Rajbari (palace ruins), colonial-era buildings, and the district museum.",
+        "details": ["Duration: 3 hours", "৳200 per person"]
+      },
+      {
+        "icon": "🌿",
+        "title": "Organic Farm Experience",
+        "desc": "Join local farmers for organic lychee, mango, and vegetable cultivation. Learn about permaculture techniques used in ESDO's eco-villages.",
+        "details": ["Duration: Half day", "Seasonal"]
+      }
+    ],
+    "nextDestination": null
+  }
+]

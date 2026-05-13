@@ -1,0 +1,21 @@
+{
+  "site": {
+    "name": "ESDO Eco Tourism",
+    "tagline": "Sustainable Community-Based Tourism in Bangladesh",
+    "description": "Experience the untouched beauty of northern Bangladesh through ESDO's community-based eco-tourism initiative. Explore heritage sites, organic tea gardens, and rural eco-villages.",
+    "url": "https://ecotourism.esdo.org",
+    "email": "info@esdo.org",
+    "phone": "+880-XXX-XXXXXXX",
+    "address": "ESDO Central Office, Eco College Campus, Gobindonogor, Thakurgaon, Bangladesh",
+    "founded": "1988",
+    "districts": 56,
+    "beneficiaries": "15.73M"
+  },
+  "sdgs": [1, 4, 5, 8, 12, 13, 15, 17],
+  "social": {
+    "facebook": "#",
+    "twitter": "#",
+    "instagram": "#",
+    "youtube": "#"
+  }
+}

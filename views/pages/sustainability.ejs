@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+    <header class="page-hero">
+        <div class="container">
+            <h1>Our Sustainability Approach</h1>
+            <p>Every initiative is designed to benefit communities while preserving the environment for future generations.</p>
+        </div>
+    </header>
+
+    <section class="section sustainability" style="padding-top:80px;">
+        <div class="container">
+            <div class="pillars-grid">
+                <% sustainability.forEach(pillar => { %>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><%= pillar.icon %></div>
+                    <h3><%= pillar.title %></h3>
+                    <p><%= pillar.description %></p>
+                </div>
+                <% }) %>
+            </div>
+
+            <div style="margin-top:60px;">
+                <h2 style="font-family:var(--font-heading); font-size:2rem; color:var(--color-dark); text-align:center; margin-bottom:40px;">Our Impact in Numbers</h2>
+                <div class="about-stats" style="max-width:800px; margin:0 auto;">
+                    <div class="stat-card"><span class="stat-number">200+</span><span class="stat-label">Families in Homestay Program</span></div>
+                    <div class="stat-card"><span class="stat-number">50+</span><span class="stat-label">Certified Local Guides</span></div>
+                    <div class="stat-card"><span class="stat-number">90%</span><span class="stat-label">Revenue Stays Local</span></div>
+                    <div class="stat-card"><span class="stat-number">70%</span><span class="stat-label">Women Homestay Hosts</span></div>
+                </div>
+            </div>
+
+            <div style="margin-top:60px; max-width:800px; margin-left:auto; margin-right:auto;">
+                <h2 style="font-family:var(--font-heading); font-size:2rem; color:var(--color-dark); margin-bottom:20px;">Detailed Initiatives</h2>
+                <% sustainability.forEach(pillar => { %>
+                <div style="margin-bottom:30px;">
+                    <h3 style="font-family:var(--font-heading); font-size:1.3rem; color:var(--color-dark); margin-bottom:12px;"><%= pillar.icon %> <%= pillar.title %></h3>
+                    <ul style="list-style:none; padding:0;">
+                        <% pillar.details.forEach(d => { %>
+                        <li style="padding:8px 0 8px 24px; position:relative; font-size:0.95rem; color:var(--color-text-light); border-bottom:1px solid var(--color-border);">
+                            <span style="position:absolute; left:0; top:8px; width:8px; height:8px; background:var(--color-accent); border-radius:50%;"></span>
+                            <%= d %>
+                        </li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

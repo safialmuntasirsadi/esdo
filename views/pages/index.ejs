@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %>
+</head>
+<body>
+    <%- include('../partials/nav', { navHero: true }) %>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle-top">Experience Northern Bangladesh</p>
+            <h1 class="hero-title">Discover the Beauty of<br><span class="highlight">Eco Tourism</span></h1>
+            <p class="hero-description">Community-based sustainable tourism that empowers local communities, preserves nature, and creates unforgettable experiences in the untouched landscapes of northern Bangladesh.</p>
+            <div class="hero-buttons">
+                <a href="/destinations" class="btn btn-primary">Explore Destinations</a>
+                <a href="/about" class="btn btn-outline">Learn About ESDO</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to discover</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">About the Organization</p>
+                <h2 class="section-title">Empowering Communities Since 1988</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Environmental and Social Development Organization (ESDO) is a leading NGO working across <strong><%= site.districts %> districts</strong> of Bangladesh, reaching over <strong><%= site.beneficiaries %> beneficiaries</strong> through sustainable development initiatives.</p>
+                    <p>Our eco-tourism project follows the <strong>eco-village model</strong> — integrating community participation, environmental conservation, and economic empowerment to create sustainable tourism destinations in northern Bangladesh.</p>
+                    <p>Aligned with the UN Sustainable Development Goals, we focus on <strong>SDGs 1, 4, 5, 8, 12, 13, 15, and 17</strong> — building tourism that lifts communities out of poverty while protecting our natural heritage.</p>
+                    <a href="/contact" class="btn btn-primary btn-sm">Get Involved</a>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number"><%= site.districts %></span>
+                        <span class="stat-label">Districts Covered</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number"><%= site.beneficiaries %></span>
+                        <span class="stat-label">Beneficiaries Reached</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number"><%= site.founded %></span>
+                        <span class="stat-label">Year Founded</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">SDGs Addressed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="section destinations" id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Where Nature Meets Culture</p>
+                <h2 class="section-title">Explore Northern Bangladesh</h2>
+                <p class="section-desc">Untouched landscapes, rich heritage, and warm hospitality await in the northern districts of Bangladesh.</p>
+            </div>
+            <div class="destinations-grid">
+                <% destinations.forEach(dest => { %>
+                    <%- include('../components/dest-card', { dest }) %>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability -->
+    <section class="section sustainability" id="sustainability">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Our Approach</p>
+                <h2 class="section-title">Sustainable Tourism, Lasting Impact</h2>
+                <p class="section-desc">Every initiative is designed to benefit communities while preserving the environment for future generations.</p>
+            </div>
+            <div class="pillars-grid">
+                <% sustainability.forEach(pillar => { %>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><%= pillar.icon %></div>
+                    <h3><%= pillar.title %></h3>
+                    <p><%= pillar.description %></p>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to Experience Sustainable Travel?</h2>
+            <p>Join us in exploring Bangladesh's natural beauty while making a positive impact on local communities.</p>
+            <a href="/contact" class="btn btn-white">Plan Your Visit</a>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="section blog-section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Stories &amp; Insights</p>
+                <h2 class="section-title">Eco Tourism Blog</h2>
+                <p class="section-desc">Discover stories, guides, and insights about sustainable travel in Bangladesh.</p>
+            </div>
+            <div class="blog-grid">
+                <% posts.filter(p => p.featured).slice(0, 3).forEach(post => { %>
+                    <%- include('../components/blog-card', { post }) %>
+                <% }) %>
+            </div>
+            <p style="text-align:center; margin-top:40px; color:var(--color-text-muted); font-style:italic;">
+                <a href="/blog" style="color:var(--color-primary); font-weight:600;">View all articles &rarr;</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Get in Touch</p>
+                <h2 class="section-title">Connect With ESDO</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>&#x1F4CD; Head Office</h4>
+                        <p><%= site.address %></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>&#x2709; Email</h4>
+                        <p><%= site.email %></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>&#x1F4DE; Phone</h4>
+                        <p><%= site.phone %></p>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" action="/contact" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+  {
+    "icon": "🌱",
+    "title": "Environmental Conservation",
+    "description": "Protecting biodiversity, promoting organic practices, and minimizing the ecological footprint of tourism activities in sensitive ecosystems.",
+    "details": [
+      "Reforestation programs in Thakurgaon and Panchagarh districts",
+      "Organic farming education for local communities",
+      "Wildlife habitat monitoring along river systems",
+      "Zero single-use plastic policy at all ESDO eco-tourism sites",
+      "Water conservation through traditional pond management"
+    ]
+  },
+  {
+    "icon": "👩‍👩‍👧",
+    "title": "Community Empowerment",
+    "description": "Training local communities as tourism entrepreneurs — from homestay management to guided tours — creating sustainable livelihoods.",
+    "details": [
+      "Homestay training for 200+ families across 3 districts",
+      "Local guide certification program for youth",
+      "Artisan market development for traditional crafts",
+      "Revenue sharing: 70-90% of tourism income stays local",
+      "Community-led tourism planning committees"
+    ]
+  },
+  {
+    "icon": "📚",
+    "title": "Cultural Preservation",
+    "description": "Documenting and celebrating indigenous traditions, crafts, and heritage sites to keep cultural identity alive for future generations.",
+    "details": [
+      "Oral history documentation of indigenous Santal communities",
+      "Terracotta heritage conservation at Kantaji Temple",
+      "Traditional agricultural knowledge preservation",
+      "Heritage mango cultivar protection program",
+      "Cultural storytelling training for local guides"
+    ]
+  },
+  {
+    "icon": "💰",
+    "title": "Economic Growth",
+    "description": "Channeling tourism revenue directly into local economies through community-based tourism enterprises and fair-trade practices.",
+    "details": [
+      "Average homestay income increase: ৳6,400-15,000/month per family",
+      "Local guide employment: 50+ certified guides",
+      "Artisan product sales through eco-tourism channels",
+      "Community fund reinvestment from tourism revenue",
+      "Indirect job creation in transport, food, and services"
+    ]
+  },
+  {
+    "icon": "♻️",
+    "title": "Responsible Travel",
+    "description": "Educating visitors on sustainable practices, waste management, and respectful engagement with local communities and ecosystems.",
+    "details": [
+      "Pre-visit orientation for all eco-tourism guests",
+      "Leave-no-trace guidelines at all sites",
+      "Waste segregation and composting programs",
+      "Cultural sensitivity training for visitors",
+      "Carbon offset through tree planting programs"
+    ]
+  },
+  {
+    "icon": "🤝",
+    "title": "Partnership & Collaboration",
+    "description": "Working with government bodies, international organizations, and local stakeholders to build a scalable eco-tourism framework.",
+    "details": [
+      "Partnership with Kazi & Kazi Tea Estate for visitor programs",
+      "Government coordination on border tourism infrastructure",
+      "NGO network for community development alignment",
+      "International organization support for capacity building",
+      "Academic partnerships for research and documentation"
+    ]
+  }
+]

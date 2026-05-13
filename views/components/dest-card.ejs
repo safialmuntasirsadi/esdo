@@ -1,0 +1,17 @@
+<div class="dest-card">
+    <a href="/destinations/<%= dest.slug %>" class="dest-card-link">
+        <div class="dest-image">
+            <img src="<%= dest.image %>" alt="<%= dest.name %> landscape" loading="lazy">
+            <div class="dest-badge"><%= dest.badge %></div>
+        </div>
+        <div class="dest-content">
+            <h3><%= dest.tagline %></h3>
+            <p><%= dest.shortDesc %></p>
+            <div class="dest-tags">
+                <% dest.tags.forEach(tag => { %>
+                    <span><%= tag %></span>
+                <% }) %>
+            </div>
+        </div>
+    </a>
+</div>

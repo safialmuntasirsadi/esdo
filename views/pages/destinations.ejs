@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+    <header class="page-hero">
+        <div class="container">
+            <h1>Our Destinations</h1>
+            <p>Explore the untouched beauty of northern Bangladesh — from ancient ponds to organic tea gardens, terracotta temples to the edge of the nation.</p>
+        </div>
+    </header>
+
+    <section class="section destinations" style="padding-top:80px;">
+        <div class="container">
+            <div class="destinations-grid">
+                <% destinations.forEach(dest => { %>
+                    <%- include('../components/dest-card', { dest }) %>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+    <header class="blog-hero-page">
+        <div class="container">
+            <h1>Eco Tourism Blog</h1>
+            <p>Stories, guides, and insights about sustainable travel in Bangladesh.</p>
+        </div>
+    </header>
+
+    <section class="section blog-section" style="padding-top:60px;">
+        <div class="container">
+            <!-- Filters -->
+            <div class="blog-filters">
+                <a href="/blog" class="filter-btn <%= !currentCategory ? 'active' : '' %>">All</a>
+                <% categories.forEach(cat => { %>
+                    <a href="/blog?category=<%= encodeURIComponent(cat) %>" class="filter-btn <%= currentCategory === cat ? 'active' : '' %>"><%= cat %></a>
+                <% }) %>
+                <form class="search-box" action="/blog" method="GET">
+                    <input type="text" name="search" placeholder="Search articles..." value="<%= searchQuery %>">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <!-- Mobile filter dropdown -->
+            <div class="blog-filters-mobile">
+                <form class="mobile-filter-form" action="/blog" method="GET">
+                    <select name="category" onchange="this.form.submit()">
+                        <option value="" <%= !currentCategory ? 'selected' : '' %>>All Categories</option>
+                        <% categories.forEach(cat => { %>
+                            <option value="<%= cat %>" <%= currentCategory === cat ? 'selected' : '' %>><%= cat %></option>
+                        <% }) %>
+                    </select>
+                </form>
+            </div>
+
+            <% if (posts.length === 0) { %>
+                <div style="text-align:center; padding:60px 0;">
+                    <p style="font-size:1.2rem; color:var(--color-text-muted);">No articles found matching your criteria.</p>
+                    <a href="/blog" style="color:var(--color-primary); font-weight:600;">View all articles &rarr;</a>
+                </div>
+            <% } else { %>
+                <div class="blog-grid">
+                    <% posts.forEach(post => { %>
+                        <%- include('../components/blog-card', { post }) %>
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

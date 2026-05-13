@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+    <header class="page-hero">
+        <div class="container">
+            <h1>About ESDO Eco Tourism</h1>
+            <p>Building sustainable tourism that empowers communities, protects nature, and connects travelers with the authentic spirit of Bangladesh.</p>
+        </div>
+    </header>
+
+    <main class="about-content">
+        <div class="container">
+            <h2>Who We Are</h2>
+            <p>Environmental and Social Development Organization (ESDO) is one of Bangladesh's leading NGOs, founded in 1988. For over three decades, ESDO has been working to improve the lives of marginalized communities through sustainable development, education, environmental conservation, and economic empowerment programs.</p>
+            <p>Today, ESDO operates across <strong><%= site.districts %> districts</strong>, reaching over <strong><%= site.beneficiaries %></strong> beneficiaries — making it one of the largest NGO networks in Bangladesh.</p>
+
+            <h2>Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">1988</span>
+                    <p class="timeline-text">ESDO founded as a community development organization</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">1995</span>
+                    <p class="timeline-text">Expanded to 20 districts with women's empowerment programs</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2005</span>
+                    <p class="timeline-text">Environmental conservation programs launched nationwide</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2015</span>
+                    <p class="timeline-text">SDG-aligned initiatives covering all 17 goals</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2024</span>
+                    <p class="timeline-text">Eco-tourism pilot programs in northern districts</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2026</span>
+                    <p class="timeline-text">Full eco-tourism network launched across 3 districts</p>
+                </div>
+            </div>
+
+            <h2>Our Mission</h2>
+            <p>ESDO's eco-tourism initiative uses sustainable tourism as a tool for community development. By training local families as hospitality providers, certifying local guides, and creating conservation-funded tourism experiences, we ensure that tourism benefits flow directly to the communities that make it possible.</p>
+
+            <h2>SDGs We Address</h2>
+            <div class="sdg-grid">
+                <div class="sdg-badge"><span class="sdg-number">1</span><span class="sdg-label">No Poverty</span></div>
+                <div class="sdg-badge"><span class="sdg-number">4</span><span class="sdg-label">Quality Education</span></div>
+                <div class="sdg-badge"><span class="sdg-number">5</span><span class="sdg-label">Gender Equality</span></div>
+                <div class="sdg-badge"><span class="sdg-number">8</span><span class="sdg-label">Decent Work</span></div>
+                <div class="sdg-badge"><span class="sdg-number">12</span><span class="sdg-label">Responsible Consumption</span></div>
+                <div class="sdg-badge"><span class="sdg-number">13</span><span class="sdg-label">Climate Action</span></div>
+                <div class="sdg-badge"><span class="sdg-number">15</span><span class="sdg-label">Life on Land</span></div>
+                <div class="sdg-badge"><span class="sdg-number">17</span><span class="sdg-label">Partnerships</span></div>
+            </div>
+
+            <h2>Our Reach</h2>
+            <p>With operations in 56 districts and a beneficiary base of 15.73 million people, ESDO has the infrastructure, trust, and community relationships needed to build eco-tourism that works — not as a marketing concept, but as a genuine engine for sustainable development.</p>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

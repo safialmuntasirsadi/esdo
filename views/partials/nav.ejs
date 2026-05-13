@@ -1,0 +1,18 @@
+<nav class="navbar <%= typeof navHero !== 'undefined' && navHero ? 'nav-hero' : 'nav-solid' %>" id="navbar">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">
+            <span class="logo-icon">&#x1F33F;</span>
+            <span class="logo-text"><%= site.name.split(' ')[0] %> <span class="logo-accent"><%= site.name.split(' ').slice(1).join(' ') %></span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/about" class="<%= page === 'about' ? 'active' : '' %>">About ESDO</a></li>
+            <li><a href="/destinations" class="<%= page === 'destinations' ? 'active' : '' %>">Destinations</a></li>
+            <li><a href="/sustainability" class="<%= page === 'sustainability' ? 'active' : '' %>">Sustainability</a></li>
+            <li><a href="/blog" class="<%= page === 'blog' ? 'active' : '' %>">Blog</a></li>
+            <li><a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>

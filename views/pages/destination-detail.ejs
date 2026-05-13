@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+
+    <!-- Hero -->
+    <header class="dest-detail-hero">
+        <div class="hero-img-wrapper">
+            <img src="<%= dest.heroImage %>" alt="<%= dest.name %> landscape">
+            <div class="hero-img-overlay"></div>
+        </div>
+        <div class="hero-content-wrap">
+            <div class="container">
+                <a href="/destinations" class="back-link">&larr; All Destinations</a>
+                <div class="detail-badge"><%= dest.badge %></div>
+                <h1><%= dest.name %>: <%= dest.tagline %></h1>
+                <p class="detail-excerpt"><%= dest.description %></p>
+                <div class="dest-detail-meta">
+                    <span>&#x1F4CD; <%= dest.division %> Division</span>
+                    <span>&#x23F1; Best: <%= dest.bestSeason %></span>
+                    <span>&#x1F4B0; <%= dest.budget %></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <article class="container">
+        <div class="article-layout">
+            <div class="article-main">
+
+                <!-- Overview -->
+                <h2 id="overview">About <%= dest.name %></h2>
+
+                <div class="info-box">
+                    <h3><%= dest.name %> at a Glance</h3>
+                    <div class="overview-grid">
+                        <div class="overview-item"><span class="item-label">Division</span><span class="item-value"><%= dest.division %></span></div>
+                        <div class="overview-item"><span class="item-label">Area</span><span class="item-value"><%= dest.area %></span></div>
+                        <div class="overview-item"><span class="item-label">Population</span><span class="item-value"><%= dest.population %></span></div>
+                        <div class="overview-item"><span class="item-label">Upazilas</span><span class="item-value"><%= dest.upazilas %></span></div>
+                        <div class="overview-item"><span class="item-label">Major Rivers</span><span class="item-value"><%= dest.rivers %></span></div>
+                        <div class="overview-item"><span class="item-label">Known For</span><span class="item-value"><%= dest.knownFor %></span></div>
+                        <div class="overview-item"><span class="item-label">Best Season</span><span class="item-value"><%= dest.bestSeason %></span></div>
+                        <div class="overview-item"><span class="item-label">Elevation</span><span class="item-value"><%= dest.elevation %></span></div>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <% dest.gallery.forEach((img, i) => { %>
+                <div class="article-image-wide">
+                    <img src="<%= img %>" alt="<%= dest.name %> gallery image <%= i + 1 %>">
+                </div>
+                <% }) %>
+
+                <!-- Experiences -->
+                <h2 id="experiences">What to Experience</h2>
+                <div class="experiences-grid">
+                    <% dest.experiences.forEach(exp => { %>
+                    <div class="exp-card">
+                        <div class="exp-icon"><%= exp.icon %></div>
+                        <h3><%= exp.title %></h3>
+                        <p><%= exp.desc %></p>
+                        <% exp.details.forEach(d => { %>
+                            <span class="exp-tag"><%= d %></span>
+                        <% }) %>
+                    </div>
+                    <% }) %>
+                </div>
+
+                <!-- Travel Info -->
+                <h2 id="get-there">How to Reach</h2>
+                <div class="travel-info-card">
+                    <div class="travel-route">
+                        <h4>From Dhaka</h4>
+                        <ul>
+                            <li><strong>By Bus:</strong> Direct services from Gabtoli/Mohakhali. Takes 9-11 hours. Overnight recommended.</li>
+                            <li><strong>By Train:</strong> Nearest major railhead is Dinajpur station, then local transport (~1 hour).</li>
+                            <li><strong>By Air:</strong> Nearest airport is Saidpur, Nilphamari. ~1.5-2 hours by road.</li>
+                        </ul>
+                    </div>
+                    <div class="travel-route">
+                        <h4>Getting Around</h4>
+                        <ul>
+                            <li><strong>Local Bus:</strong> ৳50-80 between towns and attractions.</li>
+                            <li><strong>CNG Auto:</strong> ৳150-200 per seat for inter-town travel.</li>
+                            <li><strong>ESDO Transport:</strong> Arrange through the community tourism office.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Responsible Travel -->
+                <h2 id="responsible">Travel Responsibly</h2>
+                <div class="checklist">
+                    <h3>Do's</h3>
+                    <ul>
+                        <li><strong>Ask before photographing people.</strong> Always seek permission, especially in rural areas.</li>
+                        <li><strong>Buy local produce.</strong> Purchase directly from farmers and artisans at local markets.</li>
+                        <li><strong>Participate, don't observe.</strong> When invited to join activities, engage actively.</li>
+                        <li><strong>Carry reusable items.</strong> Water bottles, bags, and utensils to minimize waste.</li>
+                    </ul>
+                </div>
+                <div class="checklist">
+                    <h3>Don'ts</h3>
+                    <ul>
+                        <li><strong>Don't use single-use plastics.</strong> Waste management in rural areas is limited.</li>
+                        <li><strong>Don't disturb wildlife or remove natural artifacts.</strong> Leave everything as you find it.</li>
+                        <li><strong>Don't visit without preparation.</strong> Check weather, carry essentials, and coordinate with ESDO guides.</li>
+                    </ul>
+                </div>
+
+                <!-- CTA -->
+                <% if (nextDest) { %>
+                <div class="article-cta">
+                    <h3>Continue Your Journey</h3>
+                    <p>Next, explore <%= nextDest.name %> — <%= nextDest.shortDesc %></p>
+                    <a href="/destinations/<%= nextDest.slug %>" class="btn btn-white">Next: <%= nextDest.name %> &rarr;</a>
+                </div>
+                <% } else { %>
+                <div class="article-cta">
+                    <h3>Plan Your Eco Tourism Trip</h3>
+                    <p>Contact ESDO's community tourism office for trip planning, homestay booking, and guide arrangements.</p>
+                    <a href="/contact" class="btn btn-white">Contact ESDO</a>
+                </div>
+                <% } %>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                <div class="sidebar-widget toc">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#overview">About <%= dest.name %></a></li>
+                        <li><a href="#experiences">What to Experience</a></li>
+                        <li><a href="#get-there">How to Reach</a></li>
+                        <li><a href="#responsible">Travel Responsibly</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Quick Facts</h3>
+                    <div class="quick-fact"><span class="fact-number"><%= dest.area.split(' ')[0] %></span><span class="fact-text">km² total area</span></div>
+                    <div class="quick-fact"><span class="fact-number"><%= dest.upazilas.match(/\d+/)?.[0] || '?' %></span><span class="fact-text">upazilas</span></div>
+                    <div class="quick-fact"><span class="fact-number"><%= dest.bestSeason %></span><span class="fact-text">best season</span></div>
+                    <div class="quick-fact"><span class="fact-number"><%= dest.budget.split(' ')[0] %></span><span class="fact-text">estimated budget</span></div>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Other Destinations</h3>
+                    <% destinations.filter(d => d.slug !== dest.slug).forEach(d => { %>
+                    <p class="related-post"><a href="/destinations/<%= d.slug %>"><%= d.name %>: <%= d.tagline %></a></p>
+                    <% }) %>
+                </div>
+                <div class="sidebar-widget sidebar-cta">
+                    <h3>Need Help Planning?</h3>
+                    <p>Contact ESDO's community tourism office for homestay booking and guide arrangements.</p>
+                    <a href="/contact" class="btn btn-primary btn-sm">Contact ESDO</a>
+                </div>
+            </aside>
+        </div>
+    </article>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>
