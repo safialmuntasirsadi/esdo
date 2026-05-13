@@ -194,6 +194,18 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
    Blog Section
    ======================================== */
 .blog-section { background: #fff; }
+.popular-blogs { background: var(--color-bg-alt); }
+.popular-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.popular-card { border-radius: var(--radius-md); overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); transition: var(--transition); }
+.popular-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.popular-card__link { display: block; text-decoration: none; color: inherit; }
+.popular-card__image { height: 140px; overflow: hidden; }
+.popular-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.popular-card:hover .popular-card__image img { transform: scale(1.05); }
+.popular-card__content { padding: 14px; }
+.popular-card__tag { font-size: 0.7rem; color: var(--color-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.popular-card__title { font-size: 0.85rem; line-height: 1.3; margin: 6px 0 8px; color: var(--color-text); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.popular-card__meta { font-size: 0.72rem; color: var(--color-text-muted); }
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .blog-card { border-radius: var(--radius-md); overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); transition: var(--transition); }
 .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
@@ -241,7 +253,10 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .footer-links li { margin-bottom: 10px; }
 .footer-links a { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
 .footer-links a:hover { color: var(--color-accent); }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.85rem; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.85rem; display: flex; flex-direction: column; gap: 6px; }
+.footer-bottom p { margin: 0; }
+.footer-bottom a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+.footer-bottom a:hover { text-decoration: underline; }
 
 /* ========================================
    Page: About
@@ -559,6 +574,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .blog-section { width: 100%; }
     .blog-section .container { width: 100%; padding: 0 16px; }
     .blog-grid { grid-template-columns: 1fr; gap: 20px; width: 100%; }
+    .popular-grid { grid-template-columns: 1fr; gap: 20px; width: 100%; }
     .blog-card { display: flex; flex-direction: column; width: 100%; }
     .blog-card-link { display: flex; flex-direction: column; height: 100%; width: 100%; }
     .blog-image { height: 200px; flex-shrink: 0; width: 100%; overflow: hidden; }
@@ -1241,6 +1257,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
     .feature-grid { grid-template-columns: repeat(2, 1fr); }
     .post-image-grid { grid-template-columns: repeat(2, 1fr); }
+    .popular-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .post-image-grid__item img { height: 180px; }
 
     .stats-grid { gap: 16px; padding: 28px 24px; }
@@ -1264,6 +1281,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .post-content__lead { font-size: 1.2rem; }
 
     .feature-grid { grid-template-columns: repeat(3, 1fr); }
+    .popular-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
     .post-meta-bar { display: none; } /* tags move to sidebar on tablet+ */
 
@@ -1327,6 +1345,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .stats-grid { padding: 32px; margin: 32px 0; }
     .stat-item__number { font-size: 2.4rem; }
     .feature-grid { gap: 18px; margin: 32px 0; }
+    .popular-grid { grid-template-columns: repeat(5, 1fr); gap: 24px; }
     .data-bar-section { padding: 32px; margin: 32px 0; }
     .data-bar-track { height: 22px; }
 

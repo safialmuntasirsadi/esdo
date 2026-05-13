@@ -24,6 +24,39 @@
         </div>
     </section>
 
+    <!-- Popular Blogs -->
+    <section class="section popular-blogs" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Most Popular</p>
+                <h2 class="section-title">Popular Blog Posts</h2>
+                <p class="section-desc">Our most-read articles about sustainable travel in Bangladesh.</p>
+            </div>
+            <div class="popular-grid">
+                <% const popularSlugs = ['what-is-ecotourism', 'bangladesh-potential', 'surjapuri-mango-tree-baliadangi', 'banglabandha-zero-point-tetulia', 'panchagarh-rocks-museum']; %>
+                <% posts.filter(p => popularSlugs.includes(p.slug)).forEach(post => { %>
+                <article class="popular-card">
+                    <a href="/blog/<%= post.slug %>" class="popular-card__link">
+                        <div class="popular-card__image">
+                            <img src="<%= post.image %>" alt="<%= post.title %>" loading="lazy">
+                        </div>
+                        <div class="popular-card__content">
+                            <span class="popular-card__tag"><%= post.category %></span>
+                            <h3 class="popular-card__title"><%= post.title %></h3>
+                            <div class="popular-card__meta">
+                                <span><%= post.readTime %></span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <% }) %>
+            </div>
+            <p style="text-align:center; margin-top:40px; color:var(--color-text-muted); font-style:italic;">
+                <a href="/blog" style="color:var(--color-primary); font-weight:600;">View all articles &rarr;</a>
+            </p>
+        </div>
+    </section>
+
     <!-- About -->
     <section class="section about" id="about">
         <div class="container">
@@ -105,24 +138,6 @@
         </div>
     </section>
 
-    <!-- Blog -->
-    <section class="section blog-section" id="blog">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Stories &amp; Insights</p>
-                <h2 class="section-title">Eco Tourism Blog</h2>
-                <p class="section-desc">Discover stories, guides, and insights about sustainable travel in Bangladesh.</p>
-            </div>
-            <div class="blog-grid">
-                <% posts.filter(p => p.featured).slice(0, 3).forEach(post => { %>
-                    <%- include('../components/blog-card', { post }) %>
-                <% }) %>
-            </div>
-            <p style="text-align:center; margin-top:40px; color:var(--color-text-muted); font-style:italic;">
-                <a href="/blog" style="color:var(--color-primary); font-weight:600;">View all articles &rarr;</a>
-            </p>
-        </div>
-    </section>
 
     <!-- Contact -->
     <section class="section contact" id="contact">

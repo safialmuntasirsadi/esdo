@@ -8,12 +8,11 @@ const OUTPUT = path.join(__dirname, 'ESDO_Project_Overview.pdf');
 
 async function generate() {
   const qrDataUrl = await QRCode.toDataURL(SITE_URL, {
-    width: 180,
+    width: 220,
     margin: 2,
     color: { dark: '#1B4332', light: '#ffffff' },
   });
 
-  // Extract base64 from data URL
   const qrBase64 = qrDataUrl.split(',')[1];
   const qrBuffer = Buffer.from(qrBase64, 'base64');
 
@@ -22,126 +21,190 @@ async function generate() {
     margin: 0,
     info: {
       Title: 'ESDO Eco-Tourism Website — Project Overview',
-      Author: 'Safial Muntasir Sadi',
+      Author: 'Mehrab Musa',
     },
   });
 
   doc.pipe(fs.createWriteStream(OUTPUT));
 
-  // --- Border frame ---
-  doc.lineWidth(1.5);
+  const W = 595.28;
+  const H = 841.89;
+  const PAD = 30;
+  const contentW = W - PAD * 2;
+
+  // Background gradient
+  const gradient = doc.linearGradient(PAD, PAD, PAD, H - PAD);
+  gradient.stop(0, '#f8faf8').stop(1, '#eef5ee');
+  doc.rect(PAD, PAD, contentW, H - PAD * 2).fill(gradient);
+
+  // Border frame
+  doc.lineWidth(2);
   doc.strokeColor('#1B4332');
-  doc.rect(18, 18, 559, 804).stroke();
+  doc.rect(PAD, PAD, contentW, H - PAD * 2).stroke();
   doc.lineWidth(0.5);
-  doc.rect(22, 22, 551, 796).stroke();
+  doc.strokeColor('#D4A843');
+  doc.rect(PAD + 4, PAD + 4, contentW - 8, H - PAD * 2 - 8).stroke();
 
-  // --- Top accent bar ---
-  doc.rect(22, 22, 551, 8).fill('#1B4332');
+  // Top accent bar
+  doc.rect(PAD, PAD, contentW, 12).fill('#1B4332');
+  doc.rect(PAD, PAD + 12, contentW, 2).fill('#D4A843');
 
-  // --- Header ---
+  // QR Code
+  const qrSize = 150;
+  const qrX = W - PAD - qrSize - 10;
+  const qrY = PAD + 14;
+  const headerW = qrX - PAD - 56;
+
+  // Header
+  let y = PAD + 28;
+  doc.fillColor('#2D6A4F');
+  doc.circle(PAD + 18, y + 8, 6).fill();
+  doc.fillColor('#40916C');
+  doc.circle(PAD + 30, y + 4, 4).fill();
+  doc.fillColor('#52B788');
+  doc.circle(PAD + 26, y + 14, 3).fill();
+
   doc.fillColor('#1B4332');
-  doc.fontSize(26);
+  doc.fontSize(20);
   doc.font('Helvetica-Bold');
-  doc.text('ESDO Eco-Tourism Website', 60, 52, { align: 'left' });
+  doc.text('ESDO Eco-Tourism Website', PAD + 42, y, { width: headerW });
 
-  doc.fontSize(12);
+  y += 28;
+  doc.fontSize(10);
   doc.font('Helvetica');
   doc.fillColor('#555555');
-  doc.text('Community-Based Sustainable Tourism Platform', 60, 82, { align: 'left' });
+  doc.text('Community-Based Sustainable Tourism Platform', PAD + 42, y, { width: headerW });
 
-  // --- Divider line ---
+  doc.image(qrBuffer, qrX, qrY, { width: qrSize, height: qrSize });
+  doc.lineWidth(1);
   doc.strokeColor('#D4A843');
-  doc.lineWidth(2);
-  doc.moveTo(60, 108).lineTo(535, 108).stroke();
-
-  // --- QR Code ---
-  doc.image(qrBuffer, 420, 46, { width: 100, height: 100 });
-  doc.fontSize(9);
+  doc.rect(qrX - 3, qrY - 3, qrSize + 6, qrSize + 6).stroke();
+  doc.fontSize(8);
   doc.fillColor('#1B4332');
-  doc.font('Helvetica');
-  doc.text('Scan to visit', 420, 152, { width: 100, align: 'center' });
+  doc.font('Helvetica-Oblique');
+  doc.text('Scan to visit', qrX, qrY + qrSize + 4, { width: qrSize, align: 'center' });
 
-  // --- Project Description ---
-  doc.fillColor('#1B4332');
-  doc.fontSize(13);
-  doc.font('Helvetica-Bold');
-  doc.text('Project Overview', 60, 130);
-
-  doc.fillColor('#333333');
-  doc.fontSize(10.5);
-  doc.font('Helvetica');
-
-  const description = `A fully functional eco-tourism website built for ESDO (Environmental and Social Development Organization) to promote sustainable, community-based tourism in northern Bangladesh. The platform showcases the region\'s natural heritage, cultural landmarks, and agro-tourism opportunities — connecting conscious travelers with authentic local experiences.`;
-
-  doc.text(description, 60, 155, { width: 340, lineGap: 3 });
-
-  // --- Key Features ---
-  doc.fillColor('#1B4332');
-  doc.fontSize(13);
-  doc.font('Helvetica-Bold');
-  doc.text('Key Features', 60, 235);
-
-  const features = [
-    'Dynamic blog system — 14+ articles on heritage, culture, agro-tourism, and experiential travel',
-    'Responsive design — optimized for mobile, tablet, and desktop',
-    'Community-first approach — highlights homestays, local guides, and village-level experiences',
-    'SDG-aligned — supports UN Sustainable Development Goals through responsible tourism',
-    'Category filtering & search — visitors can browse by topic and find relevant content',
-    'Rich article layouts — narrative storytelling with images, callouts, and structured sections',
-  ];
-
-  let y = 260;
-  features.forEach((f, i) => {
-    // Bullet dot
+  // Section header helper
+  function sectionHeader(title, yPos) {
     doc.fillColor('#1B4332');
-    doc.circle(68, y + 4, 3).fill();
+    doc.fontSize(12);
+    doc.font('Helvetica-Bold');
+    doc.text(title, PAD + 16, yPos);
+    doc.lineWidth(1);
+    doc.strokeColor('#D4A843');
+    doc.moveTo(PAD + 16, yPos + 16).lineTo(W - PAD - 16, yPos + 16).stroke();
+  }
+
+  // === PROJECT OVERVIEW ===
+  y = qrY + qrSize + 30;
+  sectionHeader('Project Overview', y);
+  y += 22;
+  doc.fillColor('#333333');
+  doc.fontSize(9);
+  doc.font('Helvetica');
+  const description = 'A fully functional eco-tourism website built for ESDO (Environmental and Social Development Organization) to promote sustainable, community-based tourism in northern Bangladesh. The platform showcases the region\'s natural heritage, cultural landmarks, and agro-tourism opportunities.';
+  doc.text(description, PAD + 16, y, { width: contentW - 32, lineGap: 3 });
+
+  // === BLOG POSTS ===
+  y += 42;
+  sectionHeader('Blog Posts', y);
+  y += 22;
+  const blogPosts = [
+    'What is Eco Tourism? A Beginner\'s Guide to Sustainable Travel',
+    'A Journey Through Panchagarh: Bangladesh\'s Northernmost Frontier',
+    'The 220-Year-Old Mango Tree That Covers Half an Acre: Walking Inside a Living Giant',
+    'Standing at 0°: The Day I Reached the Northernmost Point of Bangladesh',
+    'The Museum of Ancient Rocks in a Country Made of Mud: Panchagarh\'s Geological Secret',
+  ];
+  blogPosts.forEach((title, i) => {
+    const cardH = 20;
+    doc.fillColor(i % 2 === 0 ? '#ffffff' : '#f0f7f0');
+    doc.roundedRect(PAD + 16, y, contentW - 32, cardH, 3).fill();
+    doc.fillColor('#D4A843');
+    doc.rect(PAD + 16, y + 2, 3, cardH - 4).fill();
+    doc.fillColor('#1B4332');
+    doc.circle(PAD + 30, y + cardH / 2, 6).fill();
+    doc.fillColor('#ffffff');
+    doc.fontSize(7);
+    doc.font('Helvetica-Bold');
+    doc.text(String(i + 1), PAD + 26, y + cardH / 2 - 3, { width: 12, align: 'center' });
     doc.fillColor('#333333');
-    doc.fontSize(10);
+    doc.fontSize(8.5);
     doc.font('Helvetica');
-    doc.text(f, 80, y, { width: 430, lineGap: 2 });
-    y += 26;
+    doc.text(title, PAD + 42, y + 3, { width: contentW - 58, lineGap: 1 });
+    y += cardH + 3;
   });
 
-  // --- Tech Stack ---
-  doc.fillColor('#1B4332');
-  doc.fontSize(13);
-  doc.font('Helvetica-Bold');
-  doc.text('Tech Stack', 60, y + 10);
+  // === KEY FEATURES ===
+  y += 6;
+  sectionHeader('Key Features', y);
+  y += 22;
+  const features = [
+    'Dynamic blog — 14+ articles on heritage, culture, and eco-tourism',
+    'Mobile-first responsive design',
+    'Community-first approach — homestays, local guides',
+    'SDG-aligned — UN Sustainable Development Goals',
+    'Rich layouts — images, callouts, structured sections',
+  ];
+  features.forEach((f) => {
+    doc.fillColor('#D4A843');
+    doc.circle(PAD + 24, y + 4, 3).fill();
+    doc.fillColor('#333333');
+    doc.fontSize(8.5);
+    doc.font('Helvetica');
+    doc.text(f, PAD + 36, y, { width: contentW - 52, lineGap: 2 });
+    y += 20;
+  });
 
-  y += 35;
+  // === TECH STACK ===
+  y += 6;
+  sectionHeader('Tech Stack', y);
+  y += 22;
   const stackItems = [
     'Node.js + Express.js  —  Server-side routing and rendering',
-    'EJS Templates  —  Dynamic page generation with reusable components',
-    'Vanilla CSS  —  Mobile-first responsive design with media queries',
-    'JSON Data Layer  —  Structured content management for blog posts',
+    'EJS Templates  —  Dynamic page generation',
+    'Vanilla CSS  —  Mobile-first responsive design',
+    'JSON Data Layer  —  Structured content management',
   ];
-
   stackItems.forEach((s) => {
-    doc.fillColor('#1B4332');
-    doc.circle(68, y + 4, 3).fill();
+    doc.fillColor('#2D6A4F');
+    doc.circle(PAD + 24, y + 4, 3).fill();
     doc.fillColor('#333333');
-    doc.fontSize(10);
+    doc.fontSize(8.5);
     doc.font('Helvetica');
-    doc.text(s, 80, y, { width: 430, lineGap: 2 });
-    y += 24;
+    doc.text(s, PAD + 36, y, { width: contentW - 52, lineGap: 2 });
+    y += 20;
   });
 
-  // --- Live URL ---
-  y += 6;
-  doc.rect(60, y, 475, 42).fill('#1B4332');
+  // Live URL banner
+  y += 10;
+  const bannerY = y;
+  const bannerH = 40;
+  doc.fillColor('#1B4332');
+  doc.roundedRect(PAD + 16, bannerY, contentW - 32, bannerH, 6).fill();
+  doc.fillColor('#D4A843');
+  doc.roundedRect(PAD + 16, bannerY, 6, bannerH, 3).fill();
   doc.fillColor('#ffffff');
   doc.fontSize(11);
-  doc.font('Helvetica');
-  doc.text('Live:  ' + SITE_URL, 70, y + 14, { width: 455, align: 'center' });
-
-  // --- Footer ---
-  doc.fillColor('#999999');
+  doc.font('Helvetica-Bold');
+  doc.text('Live:  ' + SITE_URL, PAD + 36, bannerY + 13, { width: contentW - 52, align: 'center' });
   doc.fontSize(8);
   doc.font('Helvetica');
-  doc.text('Built by Safial Muntasir Sadi  •  Submitted for VIVA HR Review', 60, 800, { width: 475, align: 'center' });
+  doc.fillColor('#95D5B2');
+  doc.text('esdo.vercel.app', PAD + 36, bannerY + 26, { width: contentW - 52, align: 'center' });
+
+  // Footer
+  const footerY = H - PAD - 30;
+  doc.fillColor('#999999');
+  doc.fontSize(9);
+  doc.font('Helvetica');
+  doc.text('Created by Mehrab Musa', PAD + 16, footerY, { width: contentW - 32, align: 'center' });
+
+  // Bottom accent bar
+  doc.rect(PAD, H - PAD - 14, contentW, 14).fill('#1B4332');
+  doc.rect(PAD, H - PAD - 16, contentW, 2).fill('#D4A843');
 
   doc.end();
-
   console.log('PDF generated: ' + OUTPUT);
 }
 
