@@ -649,22 +649,42 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .blog-hero-page { 
         padding: 70px 0 60px; 
         width: 100%;
+        max-width: 100%;
     }
     .blog-hero-page .container {
         width: 100%;
+        max-width: 100%;
         padding: 0 16px;
     }
     .blog-hero-page h1 {
         word-wrap: break-word;
         overflow-wrap: break-word;
+        font-size: 1.8rem !important;
+        line-height: 1.3;
     }
     .blog-hero-page p {
         word-wrap: break-word;
         overflow-wrap: break-word;
+        font-size: 1rem;
     }
 
     /* Grids — collapse to 1 column */
-    .destinations-grid, .pillars-grid, .blog-grid { grid-template-columns: 1fr; }
+    .destinations-grid, .pillars-grid, .blog-grid { 
+        grid-template-columns: 1fr; 
+        width: 100%;
+        max-width: 100%;
+    }
+    .dest-card, .pillar-card, .blog-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    .dest-card-link, .blog-card-link {
+        width: 100%;
+    }
+    .dest-content, .blog-content {
+        width: 100%;
+        padding: 16px;
+    }
     .about-stats { grid-template-columns: 1fr; max-width: 100%; }
     .sdg-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-content { grid-template-columns: 1fr; gap: 30px; }
@@ -847,8 +867,30 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .post-step-icon { width: 44px; height: 44px; font-size: 1.2rem; }
 
     /* Dest/card images */
-    .dest-image { height: 180px; }
-    .blog-image { height: 180px; }
+    .dest-image { 
+        height: 180px; 
+        width: 100%;
+        max-width: 100%;
+    }
+    .dest-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .blog-image { 
+        height: 180px; 
+        width: 100%;
+        max-width: 100%;
+    }
+    .blog-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .dest-tags, .dest-content h3, .dest-content p {
+        max-width: 100%;
+        word-wrap: break-word;
+    }
 
     /* Sidebar — full width, ensure wrapping */
     .article-sidebar { gap: 20px; }
