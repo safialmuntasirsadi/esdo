@@ -30,7 +30,7 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: var(--font-body); color: var(--color-text); line-height: 1.7; background: var(--color-bg); overflow-x: hidden; }
+body { font-family: var(--font-body); color: var(--color-text); line-height: 1.7; background: var(--color-bg); overflow-x: hidden; overflow-wrap: break-word; word-wrap: break-word; }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
 
@@ -566,6 +566,9 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     .sdg-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
+    /* Container — reduce padding for more room */
+    .container { padding: 0 16px; }
+
     /* Navigation */
     .nav-links {
         position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
@@ -618,17 +621,20 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     /* Footer */
     .footer { padding: 40px 0 24px; }
 
-    /* Detail pages */
-    .article-layout { padding: 40px 0 60px; gap: 40px; }
+    /* Detail pages — reduce article padding */
+    .article-layout { padding: 40px 0 60px; gap: 30px; }
     .article-main h2 { font-size: 1.5rem; margin: 32px 0 16px; padding-top: 16px; }
     .article-main h2::before { width: 36px; }
 
-    /* Post detail */
-    .dest-detail-hero .hero-img-wrapper { height: 300px; }
-    .post-hero .hero-img-wrapper { height: 300px; }
+    /* Post content — prevent overflow */
+    .post-content { overflow-wrap: break-word; word-break: break-word; }
     .post-content h2 { font-size: 1.5rem; margin: 32px 0 16px; }
 
-    /* Typography — reduce sizes */
+    /* Post hero image */
+    .dest-detail-hero .hero-img-wrapper { height: 300px; }
+    .post-hero .hero-img-wrapper { height: 300px; }
+
+    /* Typography — reduce sizes and padding */
     .lead, .post-lead { font-size: 1.05rem; padding-left: 16px; margin-bottom: 20px; }
     .post-quote { padding: 20px 24px; }
     .post-quote blockquote { font-size: 1.05rem; }
@@ -690,4 +696,22 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
     /* Dest/card images */
     .dest-image { height: 180px; }
     .blog-image { height: 180px; }
+
+    /* Sidebar — full width, ensure wrapping */
+    .article-sidebar { gap: 20px; }
+    .sidebar-widget { word-wrap: break-word; overflow-wrap: break-word; }
+
+    /* Pillar items — ensure text wraps */
+    .pillar-item { flex-wrap: wrap; }
+
+    /* Quick facts — allow wrapping */
+    .quick-fact { flex-wrap: wrap; }
+
+    /* Tags — ensure wrapping */
+    .exp-tag { padding: 3px 10px; font-size: 0.7rem; }
+
+    /* Post meta — stack on very small screens */
+    .post-meta { gap: 12px; flex-wrap: wrap; }
+    .dest-detail-meta { gap: 12px; flex-wrap: wrap; }
+    .blog-meta-inline { flex-wrap: wrap; }
 }
