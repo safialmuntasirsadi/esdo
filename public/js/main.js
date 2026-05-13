@@ -41,3 +41,59 @@ document.querySelectorAll('.dest-card, .pillar-card, .blog-card, .stat-card, .ex
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
+
+/* ---- Blog Post: Scroll Reveal for Content Blocks ---- */
+const blogObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll(
+    '.post-pillars, .post-comparison, .post-steps, .post-image, ' +
+    '.post-image-grid, .callout-box, .post-quote, .post-list, ' +
+    '.stats-grid, .feature-grid, .data-bar-section'
+).forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    blogObserver.observe(el);
+});
+
+/* ---- Blog Post: Data Bar Animation ---- */
+const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bar = entry.target;
+            const targetWidth = bar.dataset.width;
+            if (targetWidth) {
+                bar.style.width = '0';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        bar.style.width = targetWidth + '%';
+                    });
+                });
+            }
+            barObserver.unobserve(bar);
+        }
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.data-bar-fill[data-animate]').forEach(bar => {
+    barObserver.observe(bar);
+});
+
+/* ---- Blog Post: Reading Progress Bar ---- */
+const progressBar = document.querySelector('.reading-progress__fill');
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollHeight > 0) {
+            const progress = (window.scrollY / scrollHeight) * 100;
+            progressBar.style.width = Math.min(progress, 100) + '%';
+        }
+    });
+}
