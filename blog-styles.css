@@ -111,6 +111,7 @@ a {
     font-weight: 400;
     font-size: 1rem;
 }
+.logo-demo { font-size: 0.75rem; font-weight: 400; color: #999; }
 
 .nav-links {
     display: flex;

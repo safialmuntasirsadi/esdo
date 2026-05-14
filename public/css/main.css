@@ -61,6 +61,7 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 .navbar.nav-hero .logo-text { color: #fff; }
 .navbar.nav-hero.scrolled .logo-text { color: var(--color-dark); }
 .logo-accent { color: var(--color-accent); font-weight: 400; font-size: 1.1rem; }
+.logo-demo { font-size: 0.75rem; font-weight: 400; color: #999; }
 .nav-links { display: flex; list-style: none; gap: 32px; }
 .nav-links a {
     color: var(--color-text); font-weight: 500; font-size: 0.95rem;
